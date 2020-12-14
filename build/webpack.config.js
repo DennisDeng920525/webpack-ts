@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './test/index.ts',
   module: {
     rules: [
       {
@@ -16,7 +16,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: 'test/index.html',
       filename: 'index.html',
       inject: true,
     }),
@@ -29,7 +29,7 @@ module.exports = {
     path: path.resolve(__dirname, '../dist'),
   },
   devServer: {
-    host: '0.0.0.0',
+    host: '127.0.0.1',
     port: 8080,
     contentBase: './dist',
     // historyApiFallback: true,

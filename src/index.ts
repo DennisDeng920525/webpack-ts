@@ -1,10 +1,20 @@
-function component() {
-  var element = document.createElement('div');
-
-  // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的
-  element.innerHTML = 'Hello World!';
-
-  return element;
+/**
+ * 检查对象是否为元素
+ * @param o 待检查对象
+ * @return {boolean}
+ */
+function isElement(o: any): boolean {
+  return typeof HTMLElement === 'object'
+    ? o instanceof HTMLElement
+    : o &&
+        typeof o === 'object' &&
+        o !== null &&
+        o.nodeType === 1 &&
+        typeof o.nodeName === 'string';
 }
 
-document.body.appendChild(component());
+function init(dom: HTMLElement, opts: any) {
+  if (!isElement(dom)) {
+    throw new Error('初始化失败，请指定有效DOM！');
+  }
+}
